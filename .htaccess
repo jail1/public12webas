@@ -1,0 +1,14 @@
+# Set the timezone, only if it was not set in php.ini
+# SetEnv APP_TIMEZONE "Europe/Bucharest"
+
+# Uncomment this line in production
+SetEnv APP_MODE "production"
+
+RewriteEngine On
+
+# Make sure PHP understands that we need the Authorization header
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]

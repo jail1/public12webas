@@ -1,0 +1,4 @@
+/vendor/
+/logs/
+app/config/production.php
+composer.lock
